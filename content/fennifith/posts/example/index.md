@@ -156,3 +156,9 @@ This is regular text.
 # Heading `with a code snippet` inside of it
 
 # Heading [with a link](https://example.com) inside of it
+
+# Quiz Components
+
+<!-- ::start:quiz-radio -->
+<!-- ::end:quiz-radio -->
+
