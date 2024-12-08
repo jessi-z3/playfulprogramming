@@ -1,3 +1,5 @@
+@use "./button" as *;
+
 :root {
 	--quiz-option_unselected_background-color_default: var(--transparent);
 	--quiz-option_unselected_background-color_hovered: var(
@@ -82,6 +84,10 @@
 	justify-content: space-between;
 	gap: var(--spc-4x);
 	padding: var(--spc-4x) var(--spc-6x) var(--spc-6x) var(--spc-6x);
+}
+
+.quizOptionContainer fieldset:has(input:invalid) ~ .quizOptionButtonRowContainer button {
+	@extend %button__disabled;
 }
 
 .quizOptionButtonContainer,

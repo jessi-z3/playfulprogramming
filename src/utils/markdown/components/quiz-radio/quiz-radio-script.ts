@@ -1,15 +1,6 @@
 function quizRadioFormBehavior(quizRadioForm: HTMLFormElement) {
-	const quizRadioButton = quizRadioForm.querySelector(
-		"button",
-	) as HTMLButtonElement;
-
 	quizRadioForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-	});
-
-	quizRadioForm.addEventListener("change", (e) => {
-		console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-		quizRadioButton.disabled = false;
 	});
 }
 
