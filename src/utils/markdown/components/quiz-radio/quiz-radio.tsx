@@ -22,13 +22,7 @@ export function QuizRadio(props: QuizRadioProps): Element {
 		props;
 
 	return (
-		<form
-			data-quiz-radio
-			{...{
-				onsubmit: "event.preventDefault()",
-			}}
-			class="quizOptionContainer"
-		>
+		<form data-quiz-radio class="quizOptionContainer">
 			<fieldset>
 				<div class="quizOptionTitle">
 					<legend class="text-style-headline-6">{title}</legend>
@@ -52,6 +46,8 @@ export function QuizRadio(props: QuizRadioProps): Element {
 					);
 				})}
 			</fieldset>
+
+			<div data-message-section></div>
 
 			<div class="quizOptionButtonRowContainer">
 				<p class="quizOptionVotes">{numberOfVotes} votes</p>
