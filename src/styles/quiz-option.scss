@@ -1,0 +1,95 @@
+:root {
+	--quiz-option_unselected_background-color_default: var(--transparent);
+	--quiz-option_unselected_background-color_hovered: var(
+		--surface_primary_emphasis-medium
+	);
+	--quiz-option_unselected_background-color_pressed: var(
+		--surface_primary_emphasis-high
+	);
+	--quiz-option_unselected_background-color_focused: var(--background_focus);
+	--quiz-option_unselected_foreground-color_default: var(
+		--foreground_emphasis-medium
+	);
+	--quiz-option_unselected_foreground-color_interaction: var(
+		--foreground_emphasis-high
+	);
+
+	--quiz-option_selected_background-color_default: var(
+		--surface_primary_emphasis-low
+	);
+	--quiz-option_selected_background-color_hovered: var(
+		--surface_primary_emphasis-medium
+	);
+	--quiz-option_selected_background-color_pressed: var(
+		--surface_primary_emphasis-high
+	);
+	--quiz-option_selected_background-color_focused: var(--background_focus);
+	--quiz-option_selected_foreground-color: var(--primary_on-variant);
+
+	--quiz-option_correct_background-color: var(--primary_variant);
+	--quiz-option_correct_text-color: var(--primary_on-variant);
+
+	// Radio button color overrides
+	--quiz-option_correct_icon-color: var(--primary_on-default);
+	--quiz-option_correct_icon-bg-color: var(--primary_default);
+
+	--quiz-option_incorrect_background-color: var(
+		--surface_secondary_emphasis-medium
+	);
+	--quiz-option_incorrect_text-color: var(--secondary_on-variant);
+
+	// Radio button color overrides
+	--quiz-option_incorrect_icon-color: var(--secondary_on-default);
+	--quiz-option_incorrect_icon-bg-color: var(--secondary_default);
+
+	--quiz-option_focus-outline_width: var(--border-width_focus);
+	--quiz-option_focus-outline_color: var(--focus-outline_primary);
+	--quiz-option_corner-radius: var(--corner-radius_l);
+	--quiz-option_icon_size: var(--icon-size_regular);
+
+	--quiz-option_padding-vertical: var(--spc-3x);
+	--quiz-option_padding-left: var(--spc-3x);
+	--quiz-option_padding-right: var(--spc-6x);
+	--quiz-option_gap: var(--spc-3x);
+	--quiz-option_row_padding-horizontal: var(--spc-3x);
+
+	--quiz_background-color: var(--surface_primary_emphasis-none);
+	--quiz_corner-radius: var(--corner-radius_xl);
+}
+
+.quizOptionContainer {
+	background-color: var(--quiz_background-color);
+	border-radius: var(--quiz_corner-radius);
+}
+
+.quizOptionContainer > * {
+	all: unset;
+}
+
+.quizOptionTitle {
+	all: unset;
+	display: block;
+	padding: var(--spc-8x) var(--spc-6x) var(--spc-4x) var(--spc-6x);
+}
+
+.quizOptionTitle > * {
+	display: contents;
+}
+
+.quizOptionButtonRowContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: var(--spc-4x);
+	padding: var(--spc-4x) var(--spc-6x) var(--spc-6x) var(--spc-6x);
+}
+
+.quizOptionButtonContainer,
+.quizOptionVotes {
+	display: flex;
+	align-items: center;
+}
+
+.quizOptionVotes {
+	margin: 0 !important;
+}
