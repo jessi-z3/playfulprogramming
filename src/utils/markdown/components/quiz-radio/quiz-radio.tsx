@@ -1,5 +1,11 @@
 /** @jsxRuntime automatic */
 import { Element } from "hast";
+import checkmark from "src/icons/checkmark.svg?raw";
+import dot from "src/icons/dot.svg?raw";
+import { fromHtml } from "hast-util-from-html";
+
+const checkmarkHast = fromHtml(checkmark, { fragment: true });
+const dotHast = fromHtml(dot, { fragment: true });
 
 export interface QuizRadioOption {
 	value: string;
@@ -44,6 +50,14 @@ export function QuizRadio(props: QuizRadioProps): Element {
 										value={option.value}
 									/>
 									<div class="quizOptionOptionInnerContainer">
+										<div class="quizOptionOptionCheckboxSvgContainer">
+											<div class="quizOptionOptionCheckboxCheckmarkSvgContainer">
+												{checkmarkHast}
+											</div>
+											<div class="quizOptionOptionCheckboxDotSvgContainer">
+												{dotHast}
+											</div>
+										</div>
 										{option.label}
 									</div>
 								</label>

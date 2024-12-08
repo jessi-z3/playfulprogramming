@@ -60,6 +60,8 @@
 .quizOptionContainer {
 	background-color: var(--quiz_background-color);
 	border-radius: var(--quiz_corner-radius);
+	width: fit-content;
+	max-width: 100%;
 }
 
 .quizOptionContainer > * {
@@ -158,19 +160,49 @@
 	background-color: var(--quiz-option_unselected_background-color_focused);
 }
 
-.quizOptionOptionContainer:has(.quizOptionOptionInput:checked)
-	.quizOptionOptionInnerContainer::before {
-	content: "✅";
+.quizOptionOptionCheckboxSvgContainer {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--quiz-option_icon_size);
+	height: var(--quiz-option_icon_size);
+	border-radius: var(--quiz-option_corner-radius);
+	border: 2px solid black;
 }
 
-.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked))
-	.quizOptionOptionInnerContainer::before {
-	content: "🛞";
+.quizOptionOptionCheckboxCheckmarkSvgContainer,
+.quizOptionOptionCheckboxDotSvgContainer,
+.quizOptionOptionCheckboxCheckmarkSvgContainer > svg,
+.quizOptionOptionCheckboxDotSvgContainer > svg {
+	height: 100%;
+	width: 100%;
 }
 
-.quizOptionOptionContainer:has(:active)
-	.quizOptionOptionInnerContainer::before {
-	content: "Ⓜ️" !important;
+.quizOptionOptionContainer:has(.quizOptionOptionInput:checked) {
+	.quizOptionOptionCheckboxDotSvgContainer {
+		display: none;
+	}
+	.quizOptionOptionCheckboxCheckmarkSvgContainer {
+		display: block;
+	}
+}
+
+.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)) {
+	.quizOptionOptionCheckboxDotSvgContainer {
+		display: none;
+	}
+	.quizOptionOptionCheckboxCheckmarkSvgContainer {
+		display: none;
+	}
+}
+
+.quizOptionOptionContainer:has(:active) {
+	.quizOptionOptionCheckboxDotSvgContainer {
+		display: block !important;
+	}
+	.quizOptionOptionCheckboxCheckmarkSvgContainer {
+		display: none !important;
+	}
 }
 
 .quizOptionOptionInput {
