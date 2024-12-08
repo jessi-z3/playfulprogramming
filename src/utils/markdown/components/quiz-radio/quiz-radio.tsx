@@ -56,7 +56,10 @@ export function QuizRadio(props: QuizRadioProps): Element {
 			<div class="quizOptionButtonRowContainer">
 				<p class="quizOptionVotes">{numberOfVotes} votes</p>
 				<span class="quizOptionButtonContainer">
-					<button class="button text-style-button-regular primary-emphasized regular">
+					<button
+						disabled
+						class="button text-style-button-regular primary-emphasized regular"
+					>
 						Submit
 					</button>
 				</span>

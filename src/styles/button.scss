@@ -260,7 +260,6 @@
 	}
 }
 
-%button__disabled,
 .button[disabled]:not([disabled="false"]),
 .button[aria-disabled]:not([aria-disabled="false"]) {
 	text-decoration: none;
