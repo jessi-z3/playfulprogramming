@@ -127,7 +127,9 @@
 	background-color: var(--quiz-option_selected_background-color_default);
 }
 
-.quizOptionOptionContainer:has(.quizOptionOptionInput:checked):hover
+.quizOptionOptionContainer:has(.quizOptionOptionInput:checked):not(
+		:has(.quizOptionOptionInput:disabled)
+	):hover
 	.quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_selected_background-color_hovered);
 }
@@ -157,14 +159,16 @@
 }
 
 .quizOptionOptionContainer
-	:not(:has(.quizOptionOptionInput:checked)):hover
+	:not(:has(.quizOptionOptionInput:checked)):not(
+		:has(.quizOptionOptionInput:disabled)
+	):hover
 	.quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_unselected_background-color_hovered);
 }
 
-.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)):has(
-		:active
-	)
+.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)):not(
+		:has(.quizOptionOptionInput:disabled)
+	):has(:active)
 	.quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_unselected_background-color_pressed);
 }
@@ -215,7 +219,9 @@
 	}
 }
 
-.quizOptionOptionContainer:has(:active) {
+.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:disabled)):has(
+		:active
+	) {
 	.quizOptionOptionCheckboxDotSvgContainer {
 		display: block !important;
 	}
