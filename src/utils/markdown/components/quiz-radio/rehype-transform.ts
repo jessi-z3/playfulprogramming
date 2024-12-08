@@ -34,7 +34,10 @@ export const transformQuizRadio: RehypeFunctionComponent = ({ children }) => {
 				continue;
 			}
 
-			for (const option of child.children as Text[]) {
+			for (const option of child.children as Element[]) {
+				if (option.type !== "element" && option.tagName !== "li") {
+					continue;
+				}
 				const rawLabel = toString(option);
 				// We want `rawLabel` to start with `( )` or `(x)` to indicate the radio button and it's correctness or not
 				// If it is not, we assume this `ul` is not a quiz radio option list and don't want to transform it
@@ -44,8 +47,9 @@ export const transformQuizRadio: RehypeFunctionComponent = ({ children }) => {
 					break;
 				}
 				const correct = match[1] === "x";
+				const innerText = option.children[0] as Text;
 				// Remove the `( )` or `(x)` from the label
-				child.value = match[2];
+				innerText.value = match[2];
 				const { id: value } = getHeaderNodeId(option, {
 					enableCustomId: true,
 				});
