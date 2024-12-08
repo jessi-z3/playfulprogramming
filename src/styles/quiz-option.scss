@@ -102,56 +102,74 @@
 
 .quizOptionOptionContainer {
 	position: relative;
+	width: 100%;
+}
+
+.quizOptionOptionInnerContainer {
 	width: fit-content;
 }
 
-.quizOptionOptionContainer:has(.quizOptionOptionInput:checked) {
+.quizOptionOptionContainer:has(.quizOptionOptionInput:checked)
+	.quizOptionOptionInnerContainer {
 	color: var(--quiz-option_selected_foreground-color);
 	background-color: var(--quiz-option_selected_background-color_default);
 }
 
-.quizOptionOptionContainer:has(.quizOptionOptionInput:checked):hover {
+.quizOptionOptionContainer:has(.quizOptionOptionInput:checked):hover
+	.quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_selected_background-color_hovered);
 }
 
-.quizOptionOptionContainer:has(.quizOptionOptionInput:checked):active {
+.quizOptionOptionContainer:has(:hover)
+	.quizOptionOptionInnerContainer:has(.quizOptionOptionInput:checked) {
 	background-color: var(--quiz-option_selected_background-color_pressed);
 }
 
 .quizOptionOptionContainer:has(.quizOptionOptionInput:checked):has(
 		*:focus-visible
-	) {
+	)
+	.quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_selected_background-color_focused);
 }
 
-.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)) {
+.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked))
+	.quizOptionOptionInnerContainer {
 	color: var(--quiz-option_unselected_foreground-color_default);
 	background-color: var(--quiz-option_unselected_background-color_default);
 }
 
-.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)):hover {
+.quizOptionOptionContainer
+	:not(:has(.quizOptionOptionInput:checked)):hover
+	.quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_unselected_background-color_hovered);
 }
 
-.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)):active {
+.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)):has(
+		:active
+	)
+	.quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_unselected_background-color_pressed);
 }
 
 .quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)):has(
 		*:focus-visible
-	) {
+	)
+	.quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_unselected_background-color_focused);
 }
 
-.quizOptionOptionContainer:has(.quizOptionOptionInput:checked)::before {
+.quizOptionOptionContainer:has(.quizOptionOptionInput:checked)
+	.quizOptionOptionInnerContainer::before {
 	content: "✅";
 }
 
-.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked))::before {
+.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked))
+	.quizOptionOptionInnerContainer::before {
 	content: "🛞";
 }
 
-.quizOptionOptionContainer:active:before {
+.quizOptionOptionContainer:has(:active)
+	.quizOptionOptionInnerContainer::before {
 	content: "Ⓜ️" !important;
 }
 

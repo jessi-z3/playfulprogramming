@@ -35,15 +35,18 @@ export function QuizRadio(props: QuizRadioProps): Element {
 						const optionId = option.value + "_id";
 						return (
 							<div class="quizOptionOptionContainer">
-								<input
-									class="quizOptionOptionInput"
-									required
-									type="radio"
-									id={optionId}
-									name={id}
-									value={option.value}
-								/>
-								<label for={optionId}>{option.label}</label>
+								<label>
+									<input
+										class="quizOptionOptionInput"
+										required
+										type="radio"
+										name={id}
+										value={option.value}
+									/>
+									<div class="quizOptionOptionInnerContainer">
+										{option.label}
+									</div>
+								</label>
 							</div>
 						);
 					})}
