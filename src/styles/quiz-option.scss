@@ -106,6 +106,7 @@
 }
 
 .quizOptionOptionContainer:has(.quizOptionOptionInput:checked) {
+	color: var(--quiz-option_selected_foreground-color);
 	background-color: var(--quiz-option_selected_background-color_default);
 }
 
@@ -124,6 +125,7 @@
 }
 
 .quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)) {
+	color: var(--quiz-option_unselected_foreground-color_default);
 	background-color: var(--quiz-option_unselected_background-color_default);
 }
 
@@ -139,6 +141,18 @@
 		*:focus-visible
 	) {
 	background-color: var(--quiz-option_unselected_background-color_focused);
+}
+
+.quizOptionOptionContainer:has(.quizOptionOptionInput:checked)::before {
+	content: "✅";
+}
+
+.quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked))::before {
+	content: "🛞";
+}
+
+.quizOptionOptionContainer:active:before {
+	content: "Ⓜ️" !important;
 }
 
 .quizOptionOptionInput {
