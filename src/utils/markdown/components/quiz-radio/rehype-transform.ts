@@ -21,10 +21,9 @@ export const transformQuizRadio: RehypeFunctionComponent = ({ children }) => {
 
 	for (const child of children as Element[]) {
 		if (isNodeHeading(child) && isNodeLargestHeading(child, largestSize)) {
-			const { id } = getHeaderNodeId(child, {
-				enableCustomId: true,
-			});
-			questionId = id;
+			// TODO: Does not need to run `getHeaderNodeId` since it's a heading and this should have already occurred
+			const { id } = child.properties;
+			questionId = id as string;
 			title = toString(child);
 			continue;
 		}
@@ -71,5 +70,6 @@ export const transformQuizRadio: RehypeFunctionComponent = ({ children }) => {
 		options,
 		numberOfVotes: 23,
 		numberOfCorrectVotes: 13,
+		children: localChildren,
 	});
 };

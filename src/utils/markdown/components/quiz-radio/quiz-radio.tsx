@@ -13,16 +13,36 @@ export interface QuizRadioProps {
 	options: QuizRadioOption[];
 	numberOfVotes: number;
 	numberOfCorrectVotes: number;
+	children: Element[];
 }
 
 /** @jsxImportSource hastscript */
 export function QuizRadio(props: QuizRadioProps): Element {
-	const { title, options, numberOfVotes, numberOfCorrectVotes } = props;
+	const { id, title, options, numberOfVotes, numberOfCorrectVotes, children } =
+		props;
 
 	return (
 		<section>
-			<h2 data-no-heading-link>{title}</h2>
-			<code>Options: {JSON.stringify(options)}</code>
+			<fieldset>
+				<legend>{title}</legend>
+
+				{children}
+
+				{options.map((option) => {
+					const optionId = option.value + "_id";
+					return (
+						<div>
+							<input
+								type="radio"
+								id={optionId}
+								name={id}
+								value={option.value}
+							/>
+							<label for={optionId}>{option.label}</label>
+						</div>
+					);
+				})}
+			</fieldset>
 		</section>
 	) as never;
 }
