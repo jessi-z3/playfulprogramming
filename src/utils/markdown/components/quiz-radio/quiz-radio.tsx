@@ -28,6 +28,7 @@ export function QuizRadio(props: QuizRadioProps): Element {
 				onsubmit: "event.preventDefault()",
 			}}
 			class="quizOptionContainer"
+
 		>
 			<fieldset required>
 				<div class="quizOptionTitle">
