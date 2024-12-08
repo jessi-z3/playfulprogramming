@@ -99,7 +99,10 @@
 .quizOptionOptionsContainer {
 	display: flex;
 	flex-direction: column;
+	// TODO: Double-check with Ed?
 	gap: var(--quiz-option_gap);
+	padding-left: var(--quiz-option_row_padding-horizontal);
+	padding-right: var(--quiz-option_row_padding-horizontal);
 }
 
 .quizOptionOptionContainer {
@@ -109,6 +112,13 @@
 
 .quizOptionOptionInnerContainer {
 	width: fit-content;
+	padding: var(--quiz-option_padding-vertical) var(--quiz-option_padding-right)
+		var(--quiz-option_padding-vertical) var(--quiz-option_padding-left);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	border-radius: var(--quiz-option_corner-radius);
 }
 
 .quizOptionOptionContainer:has(.quizOptionOptionInput:checked)
@@ -161,6 +171,7 @@
 }
 
 .quizOptionOptionCheckboxSvgContainer {
+	flex-shrink: 0;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -168,6 +179,8 @@
 	height: var(--quiz-option_icon_size);
 	border-radius: var(--quiz-option_corner-radius);
 	border: 2px solid black;
+	// TODO: Double-check with Ed?
+	margin-right: var(--quiz-option_gap);
 }
 
 .quizOptionOptionCheckboxCheckmarkSvgContainer,
