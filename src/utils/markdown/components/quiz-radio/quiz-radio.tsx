@@ -30,21 +30,24 @@ export function QuizRadio(props: QuizRadioProps): Element {
 
 				{children}
 
-				{options.map((option) => {
-					const optionId = option.value + "_id";
-					return (
-						<div>
-							<input
-								required
-								type="radio"
-								id={optionId}
-								name={id}
-								value={option.value}
-							/>
-							<label for={optionId}>{option.label}</label>
-						</div>
-					);
-				})}
+				<div class="quizOptionOptionsContainer">
+					{options.map((option) => {
+						const optionId = option.value + "_id";
+						return (
+							<div class="quizOptionOptionContainer">
+								<input
+									class="quizOptionOptionInput"
+									required
+									type="radio"
+									id={optionId}
+									name={id}
+									value={option.value}
+								/>
+								<label for={optionId}>{option.label}</label>
+							</div>
+						);
+					})}
+				</div>
 			</fieldset>
 
 			<div data-message-section></div>
