@@ -137,6 +137,12 @@
 	background-color: var(--quiz-option_selected_background-color_pressed);
 }
 
+.quizOptionOptionContainer:has(*:focus-visible)
+	.quizOptionOptionInnerContainer {
+	outline: var(--quiz-option_focus-outline_width) solid
+		var(--quiz-option_focus-outline_color);
+}
+
 .quizOptionOptionContainer:has(.quizOptionOptionInput:checked):has(
 		*:focus-visible
 	)
