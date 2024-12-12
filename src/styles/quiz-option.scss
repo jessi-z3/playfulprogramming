@@ -289,6 +289,16 @@
 	}
 }
 
+.quizOptionOptionIncorrect .quizOptionOptionInnerContainer {
+	background-color: var(--quiz-option_incorrect_background-color) !important;
+	color: var(--quiz-option_incorrect_text-color) !important;
+}
+
+.quizOptionOptionCorrect .quizOptionOptionInnerContainer {
+	background-color: var(--quiz-option_correct_background-color) !important;
+	color: var(--quiz-option_correct_text-color) !important;
+}
+
 .quizOptionOptionInput {
 	all: unset;
 	position: absolute;
@@ -316,7 +326,7 @@
 .quizOptionLoadingDotOne {
 	opacity: 0;
 	animation: quizOptionLoadingDotKeyframe 1.3s infinite;
-	animation-delay: 0.0s;
+	animation-delay: 0s;
 }
 
 .quizOptionLoadingDotTwo {
@@ -332,7 +342,13 @@
 }
 
 @keyframes quizOptionLoadingDotKeyframe {
-	0% { opacity: 0; }
-	50% { opacity: 1; }
-	100% { opacity: 0; }
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }

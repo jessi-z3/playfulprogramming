@@ -67,8 +67,6 @@ export function QuizRadio(props: QuizRadioProps): Element {
 				</div>
 			</fieldset>
 
-			<div data-message-section></div>
-
 			<div class="quizOptionBottomContainer">
 				<div class="quizOptionButtonRowContainer">
 					<p

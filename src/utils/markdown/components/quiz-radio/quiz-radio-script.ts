@@ -27,14 +27,40 @@ function enableQuizRadio(quizRadioForm: HTMLFormElement) {
 	);
 }
 
+function goUpAndFindOptionContainer(el: HTMLElement) {
+	let current: HTMLElement | null = el;
+	while (current && !current.classList.contains("quizOptionOptionContainer")) {
+		current = current.parentElement;
+	}
+	return current;
+}
+
+function verifyQuizResults(
+	quizRadioForm: HTMLFormElement,
+	correctValue: string,
+) {
+	Array.from(quizRadioForm.elements).forEach((el) => {
+		if (!(el instanceof HTMLInputElement)) {
+			return;
+		}
+		const input = el as HTMLInputElement;
+		if (input.value === correctValue) {
+			goUpAndFindOptionContainer(input)?.classList.add(
+				"quizOptionOptionCorrect",
+			);
+		}
+		if (input.checked && input.value !== correctValue) {
+			goUpAndFindOptionContainer(input)?.classList.add(
+				"quizOptionOptionIncorrect",
+			);
+		}
+	});
+}
+
 function quizRadioFormBehavior(quizRadioForm: HTMLFormElement) {
 	const quizRadioButton = quizRadioForm.querySelector(
 		"button",
 	) as HTMLButtonElement;
-
-	const messageSection = quizRadioForm.querySelector(
-		"[data-message-section]",
-	) as HTMLDivElement;
 
 	const errorSection = quizRadioForm.querySelector(
 		"[data-error-message]",
@@ -57,6 +83,7 @@ function quizRadioFormBehavior(quizRadioForm: HTMLFormElement) {
 				loadingMessage.style.display = "none";
 				errorSection.style.display = "none";
 				votes.style.display = "flex";
+				verifyQuizResults(quizRadioForm, "2");
 			})
 			.catch((err) => {
 				loadingMessage.style.display = "none";
