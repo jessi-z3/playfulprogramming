@@ -1,9 +1,3 @@
-function createPWithMessage(msg: string) {
-	const el = document.createElement("p");
-	el.innerText = msg;
-	return el;
-}
-
 function waitRandomTimeAndPossiblyFail() {
 	return new Promise<void>((resolve, reject) => {
 		setTimeout(
@@ -26,6 +20,13 @@ function disableQuizRadio(quizRadioForm: HTMLFormElement) {
 	);
 }
 
+function enableQuizRadio(quizRadioForm: HTMLFormElement) {
+	quizRadioForm.disabled = false;
+	Array.from(quizRadioForm.elements).forEach(
+		(el) => ((el as HTMLInputElement).disabled = false),
+	);
+}
+
 function quizRadioFormBehavior(quizRadioForm: HTMLFormElement) {
 	const quizRadioButton = quizRadioForm.querySelector(
 		"button",
@@ -35,18 +36,33 @@ function quizRadioFormBehavior(quizRadioForm: HTMLFormElement) {
 		"[data-message-section]",
 	) as HTMLDivElement;
 
+	const errorSection = quizRadioForm.querySelector(
+		"[data-error-message]",
+	) as HTMLElement;
+
+	const loadingMessage = quizRadioForm.querySelector(
+		"[data-loading-message]",
+	) as HTMLElement;
+
+	const votes = quizRadioForm.querySelector("[data-votes]") as HTMLElement;
+
 	quizRadioForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 		disableQuizRadio(quizRadioForm);
-		messageSection.replaceChildren(createPWithMessage("Loading..."));
+		errorSection.style.display = "none";
+		votes.style.display = "none";
+		loadingMessage.style.display = "flex";
 		waitRandomTimeAndPossiblyFail()
 			.then(() => {
-				messageSection.replaceChildren(createPWithMessage("Success"));
+				loadingMessage.style.display = "none";
+				errorSection.style.display = "none";
+				votes.style.display = "flex";
 			})
 			.catch((err) => {
-				messageSection.replaceChildren(
-					createPWithMessage("An error occurred..."),
-				);
+				loadingMessage.style.display = "none";
+				errorSection.style.display = "block";
+				votes.style.display = "flex";
+				enableQuizRadio(quizRadioForm);
 			});
 	});
 

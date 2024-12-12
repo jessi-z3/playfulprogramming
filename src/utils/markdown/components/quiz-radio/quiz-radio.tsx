@@ -69,16 +69,36 @@ export function QuizRadio(props: QuizRadioProps): Element {
 
 			<div data-message-section></div>
 
-			<div class="quizOptionButtonRowContainer">
-				<p class="quizOptionVotes">{numberOfVotes} votes</p>
-				<span class="quizOptionButtonContainer">
-					<button
-						disabled
-						class="button text-style-button-regular primary-emphasized regular"
+			<div class="quizOptionBottomContainer">
+				<div class="quizOptionButtonRowContainer">
+					<p
+						style="display: none"
+						data-loading-message
+						class="quizOptionLoading text-style-button-regular"
 					>
-						Submit
-					</button>
-				</span>
+						Submitting your answer<span class="quizOptionLoadingDotOne">.</span>
+						<span class="quizOptionLoadingDotTwo">.</span>
+						<span class="quizOptionLoadingDotThree">.</span>
+					</p>
+					<p data-votes class="quizOptionVotes">
+						{numberOfVotes} votes
+					</p>
+					<span class="quizOptionButtonContainer">
+						<button
+							disabled
+							class="button text-style-button-regular primary-emphasized regular"
+						>
+							Submit
+						</button>
+					</span>
+				</div>
+				<p
+					style="display: none"
+					data-error-message
+					class="quizOptionErrorCode text-style-body-small-bold"
+				>
+					An error occurred. Please try again.
+				</p>
 			</div>
 		</form>
 	) as never;
