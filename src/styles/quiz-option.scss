@@ -236,8 +236,10 @@
 
 .quizOptionOptionCheckboxCheckmarkSvgContainer,
 .quizOptionOptionCheckboxDotSvgContainer,
+.quizOptionOptionCheckboxCloseSvgContainer,
 .quizOptionOptionCheckboxCheckmarkSvgContainer > svg,
-.quizOptionOptionCheckboxDotSvgContainer > svg {
+.quizOptionOptionCheckboxDotSvgContainer > svg,
+.quizOptionOptionCheckboxCloseSvgContainer > svg {
 	height: 100%;
 	width: 100%;
 }
@@ -250,6 +252,9 @@
  */
 .quizOptionOptionContainer:has(.quizOptionOptionInput:checked) {
 	.quizOptionOptionCheckboxDotSvgContainer {
+		display: none;
+	}
+	.quizOptionOptionCheckboxCloseSvgContainer {
 		display: none;
 	}
 	.quizOptionOptionCheckboxCheckmarkSvgContainer {
@@ -265,6 +270,9 @@
  */
 .quizOptionOptionContainer:not(:has(.quizOptionOptionInput:checked)) {
 	.quizOptionOptionCheckboxDotSvgContainer {
+		display: none;
+	}
+	.quizOptionOptionCheckboxCloseSvgContainer {
 		display: none;
 	}
 	.quizOptionOptionCheckboxCheckmarkSvgContainer {
@@ -284,20 +292,66 @@
 	.quizOptionOptionCheckboxDotSvgContainer {
 		display: block !important;
 	}
+	.quizOptionOptionCheckboxCloseSvgContainer {
+		display: none !important;
+	}
 	.quizOptionOptionCheckboxCheckmarkSvgContainer {
 		display: none !important;
 	}
 }
 
+/**
+ * Incorrect option state should:
+ * - Show close icon
+ * - Hide checkmark
+ * - Hide dot
+ */
 .quizOptionOptionIncorrect .quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_incorrect_background-color) !important;
 	color: var(--quiz-option_incorrect_text-color) !important;
+}
+
+.quizOptionOptionIncorrect .quizOptionOptionCheckboxSvgContainer {
+	background-color: var(--quiz-option_incorrect_icon-bg-color);
+	border-color: var(--quiz-option_incorrect_icon-bg-color);
+	color: var(--quiz-option_incorrect_icon-color);
+}
+
+.quizOptionOptionIncorrect {
+	.quizOptionOptionCheckboxCloseSvgContainer {
+		display: block !important;
+	}
+	.quizOptionOptionCheckboxCheckmarkSvgContainer {
+		display: none !important;
+	}
+	.quizOptionOptionCheckboxDotSvgContainer {
+		display: none !important;;
+	}
 }
 
 .quizOptionOptionCorrect .quizOptionOptionInnerContainer {
 	background-color: var(--quiz-option_correct_background-color) !important;
 	color: var(--quiz-option_correct_text-color) !important;
 }
+
+.quizOptionOptionCorrect .quizOptionOptionCheckboxSvgContainer {
+	background-color: var(--quiz-option_correct_icon-bg-color);
+	border-color: var(--quiz-option_correct_icon-bg-color);
+	color: var(--quiz-option_correct_icon-color);
+}
+
+.quizOptionOptionCorrect {
+	.quizOptionOptionCheckboxCloseSvgContainer {
+		display: none !important;
+	}
+	.quizOptionOptionCheckboxCheckmarkSvgContainer {
+		display: block !important;
+	}
+	.quizOptionOptionCheckboxDotSvgContainer {
+		display: none !important;;
+	}
+}
+
 
 .quizOptionOptionInput {
 	all: unset;
