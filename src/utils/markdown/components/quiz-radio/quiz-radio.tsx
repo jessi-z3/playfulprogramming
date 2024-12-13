@@ -91,7 +91,7 @@ export function QuizRadio(props: QuizRadioProps): Element {
 							disabled
 							class="button text-style-button-regular primary-emphasized regular"
 						>
-							Submit
+							<span className="innerText">Submit</span>
 						</button>
 					</span>
 				</div>
